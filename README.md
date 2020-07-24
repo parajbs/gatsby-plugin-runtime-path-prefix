@@ -1,7 +1,5 @@
 # gatsby-plugin-swarm
 
-[![NPM version][npm-image]][npm-url]
-
 Adds support for deploying [Gatsby](https://www.gatsbyjs.org/) websites to [Swarm](https://ethersphere.github.io/swarm-home/) and [IPFS](https://ipfs.io/) by ensuring that assets are relative.
 
 This plugin is a modified version of [gatsby-plugin-ipfs](https://github.com/moxystudio/gatsby-plugin-ipfs/) to add support for deploy on Swarm.
