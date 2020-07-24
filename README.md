@@ -1,15 +1,26 @@
 # gatsby-plugin-swarm
 
+[![NPM version][npm-image]][npm-url]
+
 Adds support for deploying [Gatsby](https://www.gatsbyjs.org/) websites to [Swarm](https://ethersphere.github.io/swarm-home/) and [IPFS](https://ipfs.io/) by ensuring that assets are relative.
 
 This plugin is a modified version of [gatsby-plugin-ipfs](https://github.com/moxystudio/gatsby-plugin-ipfs/) to add support for deploy on Swarm.
 
+## Installation
+
+```
+# Using npm
+npm install --save gatsby-plugin-swarm
+
+# Using yarn
+yarn add gatsby-plugin-swarm
+```
 
 ## Usage
 
 Set `prefixPath` to an arbitrary string (eg: `__PATH_PREFIX__`) and include the plugin in your `gatsby-config.js` file.
- - Also make sure to add the option `prefix` set equal to the pathPrefix.
- - The option `pattern` should match the swarm/ipfs path prefix
+ - Also make sure the option `prefix` is equal to the pathPrefix.
+ - The option `pattern` should match the swarm/ipfs path prefix.
 
 ```js
 module.exports = {
@@ -24,6 +35,11 @@ module.exports = {
     },
   ],
 };
+```
+
+To build with path prefix use the following command:
+```
+gatsby build --prefix-paths
 ```
 
 ## Options
