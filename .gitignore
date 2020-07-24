@@ -23,3 +23,7 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+# dotenv environment variable files
+.env*
+!.env.example
