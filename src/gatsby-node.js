@@ -3,7 +3,7 @@ const {
   relativizeHtmlFiles,
   relativizeJsContentFiles,
   relativizeMiscAssetFiles
-} = require("./src/path-fixers")
+} = require("./path-fixers")
 
 exports.onPreBootstrap = ({ store, reporter }) => {
   const { config, program } = store.getState()

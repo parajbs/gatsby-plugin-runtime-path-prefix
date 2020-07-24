@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-swarm",
   "description": "Adds support for deploying Gatsby to Swarm/IPFS by ensuring that assets are relative",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "keywords": [
     "gatsby",
     "gatsby-plugin",
@@ -14,10 +14,17 @@
     "basename"
   ],
   "author": "Mattia Dalzocchio <mattiadalzocchio@me.com>",
+  "homepage": "https://github.com/mattiaz9/gatsby-plugin-swarm",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mattiaz9/gatsby-plugin-swarm.git"
+  },
   "license": "MIT",
   "files": [
     "gatsby-node.js",
-    "src"
+    "path-fixers.js",
+    "basename-prefix.js",
+    "head-prefix.js"
   ],
   "dependencies": {
     "globby": "^11.0.1",
@@ -25,7 +32,15 @@
     "p-map": "^4.0.0",
     "uglify-js": "^3.10.0"
   },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "babel-preset-gatsby-package": "^0.1.2"
+  },
   "peerDependencies": {
     "gatsby": "^2.20.0"
+  },
+  "scripts": {
+    "build": "babel src --out-dir ."
   }
 }
