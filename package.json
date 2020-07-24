@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-swarm",
   "description": "Adds support for deploying Gatsby to Swarm/IPFS by ensuring that assets are relative",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "keywords": [
     "gatsby",
     "gatsby-plugin",
@@ -24,11 +24,9 @@
     "gatsby-node.js",
     "path-fixers.js",
     "basename-prefix.js",
-    "head-prefix.js"
+    "head-prefix.js",
+    "runtime"
   ],
-  "directories": {
-    "runtime": "runtime"
-  },
   "dependencies": {
     "globby": "^11.0.1",
     "is-text-path": "^2.0.0",
