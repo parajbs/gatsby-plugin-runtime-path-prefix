@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-plugin-swarm",
+  "name": "gatsby-plugin-runtime-path-prefix",
   "description": "Adds support for deploying Gatsby to Swarm/IPFS by ensuring that assets are relative",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "keywords": [
     "gatsby",
     "gatsby-plugin",
@@ -14,10 +14,10 @@
     "basename"
   ],
   "author": "Mattia Dalzocchio <mattiadalzocchio@me.com>",
-  "homepage": "https://github.com/mattiaz9/gatsby-plugin-swarm",
+  "homepage": "https://github.com/mattiaz9/gatsby-plugin-runtime-path-prefix",
   "repository": {
     "type": "git",
-    "url": "git@github.com:mattiaz9/gatsby-plugin-swarm.git"
+    "url": "git@github.com:mattiaz9/gatsby-plugin-runtime-path-prefix.git"
   },
   "license": "MIT",
   "files": [

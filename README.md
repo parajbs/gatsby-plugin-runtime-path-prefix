@@ -1,4 +1,4 @@
-# gatsby-plugin-swarm
+# gatsby-plugin-runtime-path-prefix
 
 Adds support for deploying [Gatsby](https://www.gatsbyjs.org/) websites to [Swarm](https://ethersphere.github.io/swarm-home/) and [IPFS](https://ipfs.io/) by ensuring that assets are relative.
 
@@ -8,10 +8,10 @@ This plugin is a modified version of [gatsby-plugin-ipfs](https://github.com/mox
 
 ```
 # Using npm
-npm install --save gatsby-plugin-swarm
+npm install --save gatsby-plugin-runtime-path-prefix
 
 # Using yarn
-yarn add gatsby-plugin-swarm
+yarn add gatsby-plugin-runtime-path-prefix
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ module.exports = {
   pathPrefix: '__PATH_PREFIX__',
   plugins: [
     {
-      resolve: `gatsby-plugin-swarm`,
+      resolve: `gatsby-plugin-runtime-path-prefix`,
       options: {
         prefix: `__PATH_PREFIX__`,
         pattern: /^(\/bzz:\/[^/]+)/ // use /^(\/(?:ipfs|ipns)\/[^/]+)/ for IPFS
