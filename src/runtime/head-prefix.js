@@ -4,7 +4,7 @@
   if (forceTrailingSlash && !window.location.pathname.endsWith("/")) {
     window.location.href =
       window.location.origin +
-      window.location.pathname + "/"
+      window.location.pathname.replace(/\/?$/, "/") +
       window.location.search;
   }
   var ipfsPathPrefix = (window.location.pathname.match(__PATTERN__) || [])[0] || '';

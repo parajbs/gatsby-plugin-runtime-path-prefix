@@ -15,7 +15,6 @@ exports.onPreBootstrap = ({ store, reporter }) => {
     if (!config.pathPrefix || config.pathPrefix === "") {
       reporter.panic(`You must set the prefix option in your gatsby-config.js file`)
     }
-
     if (!prefix || prefix === "") {
       reporter.panic(`You must set the prefix option in gatsby-plugin-runtime-path-prefix options`)
     }

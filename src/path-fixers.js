@@ -30,16 +30,16 @@ const getRelativePrefix = path => {
  * @param {boolean} forceTrailingSlash Add a trailing slash to a tag links if missing
  */
 const relativizeHtmlFiles = async (prefix, forceTrailingSlash = false) => {
-  const paths = await globby(['public/**/*.html'])
+  let paths = await globby(['public/**/*.html'])
 
   await pMap(paths, async path => {
     const buffer = await readFileAsync(path)
     let pageContent = buffer.toString()
 
-    // Skip if there's nothing to do
-    if (!pageContent.includes(prefix)) {
-      return
-    }
+    const relativePrefix = getRelativePrefix(path)
+
+    // Fix relative paths
+    pageContent = pageContent.replace(/url\(\.\/static/g, `url(${relativePrefix}/static`)
 
     // Fix trailing slash
     if (forceTrailingSlash) {
@@ -54,7 +54,6 @@ const relativizeHtmlFiles = async (prefix, forceTrailingSlash = false) => {
 
     // Fix base html file
     const pattern = new RegExp(`\/${prefix}\/`, "g")
-    let relativePrefix = getRelativePrefix(path)
     let content = pageContent.replace(pattern, relativePrefix)
     await writeFileAsync(path, content)
   }, {
@@ -160,17 +159,17 @@ const injectScriptsInHtmlFiles = async (prefix, pattern, forceTrailingSlash, use
   const paths = await globby(['public/**/*.html'])
 
   await pMap(paths, async path => {
-      let contents = await readFileAsync(path)
+    let contents = await readFileAsync(path)
 
-      contents = contents
-        .toString()
-        .replace(/<head>/, `<head><script>${scriptContents}</script>`)
+    contents = contents
+      .toString()
+      .replace(/<head>/, `<head><script>${scriptContents}</script>`)
 
-        if (useBasenamePrefix) {
-          contents = contents.replace(/<\/body>/, `<script>${basenameFixContent}</script></body>`)
-        }
+    if (useBasenamePrefix) {
+      contents = contents.replace(/<\/body>/, `<script>${basenameFixContent}</script></body>`)
+    }
 
-      await writeFileAsync(path, contents)
+    await writeFileAsync(path, contents)
   }, {
     concurrency: TRANSFORM_CONCURRENCY
   })

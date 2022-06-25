@@ -3,7 +3,9 @@
 
   /// don't run if __PATH_PREFIX__ is empty
   if (window.__PATH_PREFIX__) {
+    console.info('UPDATING PATH PREFIX....')
     fixCurrentUrls();
+    fixStaticAssets();
     observeDOM();
   }
 
@@ -15,25 +17,34 @@
       }, '')
       .replace(/,$/, '');
     var currentScripts = document.querySelectorAll(query);
+    console.log(currentScripts);
     fixUrls(currentScripts);
   }
 
   /// Observe for added scripts and links in DOM
   function observeDOM() {
     var observer = new MutationObserver(function (mutations) {
-      // mutations.forEach(function (mutation) {
-      //   if (mutation.type === "attributes") {
-      //     fixUrls([mutation.target]);
-      //   }
-      //   fixUrls(mutation.addedNodes);
-      // });
       fixCurrentUrls();
     });
     observer.observe(document.documentElement, {
       childList: true,
       subtree: true,
-      attributes: true
     });
+  }
+
+  /// update static assets paths
+  function fixStaticAssets() {
+    // var basename = window.__PATH_PREFIX__;
+
+    // var images = document.querySelectorAll('img');
+    // images.forEach(function (img) {
+    //   img.src = img.src.replace(/^.?\/static\//g, basename + '/static/')
+    // });
+
+    // var styles = document.querySelectorAll('style');
+    // styles.forEach(function (style) {
+    //   style.innerText = style.innerText.replace(/^.?\/static\//g, basename + '/static/')
+    // });
   }
 
   /// Replace script and link tags with corrected one
