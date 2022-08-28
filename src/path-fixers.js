@@ -86,7 +86,7 @@ const relativizeJsContentFiles = async prefix => {
     contents = contents
       .replace(pattern1, ` ${prefix} `)
       .replace(pattern2, (matches, g1, g2, g3) => ` ${prefix} + ${g1}/${g2}${g3}`)
-
+    contents = contents.replace(/load \\ /g, 'load " + ')
     contents = `if(typeof ${prefix} === 'undefined'){${prefix}=''}${contents}`
 
     await writeFileAsync(path, contents)
